@@ -1,0 +1,57 @@
+
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const memos = await getCollection("memos");
+  return memos.map((m) => ({ params: { slug: m.slug }, props: { memo: m } }));
+}
+
+const { memo } = Astro.props;
+const { Content } = await memo.render();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{memo.data.title} — The Journal of Revised Truth</title>
+    <style>
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#fff; color:#111; }
+      main { max-width: 780px; margin: 0 auto; padding: 56px 20px; }
+      .mast { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; }
+      h1 { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 600; margin: 10px 0 12px; }
+      .meta { font-size: 14px; line-height: 1.6; color: #333; }
+      .meta strong { color:#111; font-weight: 600; }
+      hr { border: none; border-top: 1px solid #e5e5e5; margin: 26px 0; }
+      article { font-size: 18px; line-height: 1.7; }
+      article h2 { font-size: 18px; margin-top: 28px; }
+      a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mast">The Journal of Revised Truth</div>
+      <h1>{memo.data.title}</h1>
+
+      <div class="meta">
+        <div><strong>{memo.data.division}</strong>{memo.data.series ? ` · Series: ${memo.data.series}` : ""}</div>
+        <div>Memorandum <strong>{memo.data.memo_id}</strong> · Stage: {memo.data.stage} · Status: {memo.data.status}</div>
+        {memo.data.provenance ? <div>Provenance: {memo.data.provenance}</div> : null}
+        <div>Filed: {memo.data.published_at}</div>
+      </div>
+
+      <hr />
+
+      <article>
+        <Content />
+      </article>
+
+      <hr />
+
+      <div style="font-size:14px; color:#333;">
+        <a href="/archive">Archive</a> · <a href="/mission">Mission</a> · <a href="/about">About</a>
+      </div>
+    </main>
+  </body>
+</html>

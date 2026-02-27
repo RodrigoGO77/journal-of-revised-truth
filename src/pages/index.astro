@@ -1,17 +1,62 @@
 ---
+import { getCollection } from "astro:content";
 
+const memos = await getCollection("memos");
+memos.sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
+const latest = memos[0];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Journal of Revised Truth</title>
+    
+    <style>
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#fff; color:#111; }
+      main { max-width: 980px; margin: 0 auto; padding: 56px 20px; }
+      h1 { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 600; margin: 0 0 14px; }
+      .intro { max-width: 780px; font-size: 18px; line-height: 1.7; color:#222; }
+      nav { margin-top: 18px; font-size: 14px; display:flex; gap:18px; flex-wrap: wrap; }
+      a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+      .card { margin-top: 36px; padding-top: 20px; border-top: 1px solid #e5e5e5; max-width: 780px;}
+      .meta { font-size: 14px; color:#333; line-height:1.6; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>The Journal of Revised Truth</h1>
+
+      <div class="intro">
+        The Journal compiles memoranda concerning the revision of previously settled understandings across eras, institutions, and domains.
+        <br /><br />
+        Documents are presented with their known circulation stage and archival status. Provenance may be incomplete. Interpretations remain subject to clarification.
+        <br /><br />
+        Humanity remains operational.
+      </div>
+
+      <nav>
+        <a href="/archive">Archive</a>
+        <a href="/mission">Mission</a>
+        <a href="/about">About</a>
+      </nav>
+
+      {latest ? (
+        <div class="card">
+          <div class="meta">Latest Memorandum · {latest.data.division} · {latest.data.memo_id} · {latest.data.published_at}</div>
+          <div style="margin-top:10px; font-size:18px;">
+            <a href={`/memos/${latest.slug}`}>{latest.data.title}</a>
+          </div>
+        </div>
+      ) : (
+        <div class="card">
+          <div class="meta">No memoranda currently available.</div>
+        </div>
+      )}
+    </main>
+  </body>
 </html>
+
+
+
+

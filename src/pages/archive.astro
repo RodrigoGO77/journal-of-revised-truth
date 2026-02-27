@@ -1,0 +1,50 @@
+
+---
+import { getCollection } from "astro:content";
+
+const memos = await getCollection("memos");
+memos.sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Archive — The Journal of Revised Truth</title>
+    <style>
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#fff; color:#111; }
+      main { max-width: 980px; margin: 0 auto; padding: 56px 20px; }
+      h1 { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 600; margin: 0 0 10px; }
+      .sub { max-width: 780px; font-size: 16px; line-height: 1.6; color:#333; }
+      a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+      .list { margin-top: 26px; max-width: 780px; border-top: 1px solid #e5e5e5; }
+      .row { padding: 16px 0; border-bottom: 1px solid #e5e5e5; }
+      .meta { font-size: 13px; color:#333; line-height:1.6; }
+      .title { font-size: 18px; margin-top: 6px; }
+      nav { margin-top: 18px; font-size: 14px; display:flex; gap:18px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Archive</h1>
+      <div class="sub">
+        Memoranda are listed by filing date. Circulation stages and adoption statuses may be incomplete.
+      </div>
+
+      <nav>
+        <a href="/">Home</a>
+        <a href="/mission">Mission</a>
+        <a href="/about">About</a>
+      </nav>
+
+      <div class="list">
+        {memos.map((m) => (
+          <div class="row">
+            <div class="meta">{m.data.division} · Memorandum {m.data.memo_id} · {m.data.published_at} · Stage: {m.data.stage} · Status: {m.data.status}</div>
+            <div class="title"><a href={`/memos/${m.slug}`}>{m.data.title}</a></div>
+          </div>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
