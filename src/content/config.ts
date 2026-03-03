@@ -5,6 +5,7 @@ const memos = defineCollection({
   schema: z.object({
     title: z.string(),
     division: z.string(),
+    division_slug: z.string(), // e.g., "continuity-risk"
     series: z.string().optional(),
     memo_id: z.string(), // e.g., "0-A"
     stage: z.string(),   // e.g., "Initial Circulation"
