@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content";
+
+const memos = await getCollection("memos");
+
+// series_slug -> { name, memos }
+const bySeries = new Map<string, { name: string; memos: typeof memos }>();
+
+for (const m of memos) {
+  const sSlug = m.data.series_slug;
+  const sName = m.data.series;
+  if (!sSlug || !sName) continue;
+
+  if (!bySeries.has(sSlug)) bySeries.set(sSlug, { name: sName, memos: [] });
+  bySeries.get(sSlug)!.memos.push(m);
+}
+
+const seriesList = Array.from(bySeries.entries()).sort((a, b) => a[1].name.localeCompare(b[1].name));
+for (const [, obj] of bySeries.entries()) obj.memos.sort((a,b)=> (a.data.published_at < b.data.published_at ? 1 : -1));
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Series — The Journal of Revised Truth</title>
+  <style>
+    body{margin:0;font-family:ui-sans-serif,system-ui;background:#fff;color:#111}
+    main{max-width:980px;margin:0 auto;padding:56px 20px}
+    h1{font-family:ui-serif,Georgia,serif;font-weight:600;margin:0 0 10px}
+    .sub{max-width:780px;font-size:16px;line-height:1.6;color:#333}
+    nav{margin-top:18px;font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
+    a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+    .list{margin-top:26px;max-width:780px;border-top:1px solid #e5e5e5}
+    .row{padding:16px 0;border-bottom:1px solid #e5e5e5}
+    .meta{font-size:13px;color:#333;line-height:1.6}
+    .title{font-size:18px;margin-top:6px}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Series</h1>
+  <div class="sub">Thematic groupings reflect current archival practice and remain subject to revision.</div>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/archive">Archive</a>
+    <a href="/divisions">Divisions</a>
+    <a href="/mission">Mission</a>
+  </nav>
+
+  <div class="list">
+    {seriesList.length === 0 ? (
+      <div class="row"><div class="meta">No series currently indexed.</div></div>
+    ) : (
+      seriesList.map(([slug, obj]) => {
+        const latest = obj.memos[0];
+        return (
+          <div class="row">
+            <div class="meta">Latest filing: {latest.data.published_at} · Memorandum {latest.data.memo_id}</div>
+            <div class="title"><a href={`/series/${slug}`}>{obj.name}</a></div>
+          </div>
+        );
+      })
+    )}
+  </div>
+</main>
+</body>
+</html>

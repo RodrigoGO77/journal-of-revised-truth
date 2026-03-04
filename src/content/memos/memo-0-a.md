@@ -2,6 +2,7 @@
 title: "Territorial Consolidation Through Comprehensive Enumeration"
 division: "Continuity Risk Division"
 division_slug: "continuity-risk"
+series_slug: "enumeration-control"
 series: "Enumeration & Control"
 memo_id: "0-A"
 stage: "Initial Circulation"

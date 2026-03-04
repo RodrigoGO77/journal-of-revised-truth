@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const letters = await getCollection("letters");
+  return letters.map((l) => ({ params: { slug: l.slug }, props: { letter: l } }));
+}
+
+const { letter } = Astro.props;
+const { Content } = await letter.render();
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{letter.data.title} — Letters</title>
+  <style>
+    body{margin:0;font-family:ui-sans-serif,system-ui;background:#fff;color:#111}
+    main{max-width:780px;margin:0 auto;padding:56px 20px}
+    .mast{font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+    h1{font-family:ui-serif,Georgia,serif;font-weight:600;margin:10px 0 12px}
+    .meta{font-size:14px;line-height:1.6;color:#333}
+    hr{border:none;border-top:1px solid #e5e5e5;margin:26px 0}
+    article{font-size:18px;line-height:1.7}
+    a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  </style>
+</head>
+<body>
+<main>
+  <div class="mast">The Journal of Revised Truth · Letters</div>
+  <h1>{letter.data.title}</h1>
+  <div class="meta">
+    From: {letter.data.from} · Topic: {letter.data.topic}{letter.data.status ? ` · Status: ${letter.data.status}` : ""} · Filed: {letter.data.published_at}
+  </div>
+
+  <hr />
+  <article><Content /></article>
+  <hr />
+
+  <div style="font-size:14px;color:#333;">
+    <a href="/letters">Letters</a> · <a href="/">Home</a>
+  </div>
+</main>
+</body>
+</html>

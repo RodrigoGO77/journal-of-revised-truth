@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+const letters = await getCollection("letters");
+letters.sort((a,b)=> (a.data.published_at < b.data.published_at ? 1 : -1));
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Letters — The Journal of Revised Truth</title>
+  <style>
+    body{margin:0;font-family:ui-sans-serif,system-ui;background:#fff;color:#111}
+    main{max-width:980px;margin:0 auto;padding:56px 20px}
+    h1{font-family:ui-serif,Georgia,serif;font-weight:600;margin:0 0 10px}
+    .sub{max-width:780px;font-size:16px;line-height:1.6;color:#333}
+    nav{margin-top:18px;font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
+    a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+    .list{margin-top:26px;max-width:780px;border-top:1px solid #e5e5e5}
+    .row{padding:16px 0;border-bottom:1px solid #e5e5e5}
+    .meta{font-size:13px;color:#333;line-height:1.6}
+    .title{font-size:18px;margin-top:6px}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Letters</h1>
+  <div class="sub">Correspondence is published as received, with minimal intervention. Verification status is noted where possible.</div>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/archive">Archive</a>
+    <a href="/divisions">Divisions</a>
+    <a href="/series">Series</a>
+  </nav>
+
+  <div class="list">
+    {letters.map((l) => (
+      <div class="row">
+        <div class="meta">From: {l.data.from} · Topic: {l.data.topic}{l.data.status ? ` · Status: ${l.data.status}` : ""} · {l.data.published_at}</div>
+        <div class="title"><a href={`/letters/${l.slug}`}>{l.data.title}</a></div>
+      </div>
+    ))}
+  </div>
+</main>
+</body>
+</html>

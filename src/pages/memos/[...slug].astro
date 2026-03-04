@@ -1,6 +1,6 @@
-
 ---
 import { getCollection } from "astro:content";
+import { buildMemoIndex } from "../../lib/memoIndex";
 
 export async function getStaticPaths() {
   const memos = await getCollection("memos");
@@ -9,6 +9,34 @@ export async function getStaticPaths() {
 
 const { memo } = Astro.props;
 const { Content } = await memo.render();
+
+// Build memo_id -> URL map for cross-links
+const memoIndex = await buildMemoIndex();
+
+// Bidirectional references (who points to THIS memo?)
+const allMemos = await getCollection("memos");
+const thisId = memo.data.memo_id;
+
+const inbound = allMemos
+  .filter((m) =>
+    m.data.amends === thisId ||
+    m.data.retracts === thisId ||
+    m.data.superseded_by === thisId
+  )
+  .sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
+
+function relationLabel(m: any) {
+  if (m.data.amends === thisId) return "Amends this memorandum";
+  if (m.data.retracts === thisId) return "Retracts this memorandum";
+  if (m.data.superseded_by === thisId) return "Supersedes this memorandum";
+  return "References this memorandum";
+}
+
+// Helper: returns a URL if we know it, otherwise null (so we don’t link to "#")
+function linkFor(id?: string) {
+  if (!id) return null;
+  return memoIndex[id] ?? null;
+}
 ---
 
 <html lang="en">
@@ -35,8 +63,45 @@ const { Content } = await memo.render();
       <h1>{memo.data.title}</h1>
 
       <div class="meta">
-        <div><strong>{memo.data.division}</strong>{memo.data.series ? ` · Series: ${memo.data.series}` : ""}</div>
-        <div>Memorandum <strong>{memo.data.memo_id}</strong> · Stage: {memo.data.stage} · Status: {memo.data.status}</div>
+        <div>
+          <strong>{memo.data.division}</strong>
+          {memo.data.series ? ` · Series: ${memo.data.series}` : ""}
+        </div>
+
+        <div>
+          Memorandum <strong>{memo.data.memo_id}</strong> · Stage: {memo.data.stage} · Status: {memo.data.status}
+        </div>
+
+        {memo.data.amends ? (
+          <div>
+            Amends: {linkFor(memo.data.amends) ? (
+              <a href={linkFor(memo.data.amends)}>{memo.data.amends}</a>
+            ) : (
+              <span>{memo.data.amends}</span>
+            )}
+          </div>
+        ) : null}
+
+        {memo.data.retracts ? (
+          <div>
+            Retracts: {linkFor(memo.data.retracts) ? (
+              <a href={linkFor(memo.data.retracts)}>{memo.data.retracts}</a>
+            ) : (
+              <span>{memo.data.retracts}</span>
+            )}
+          </div>
+        ) : null}
+
+        {memo.data.superseded_by ? (
+          <div>
+            Superseded by: {linkFor(memo.data.superseded_by) ? (
+              <a href={linkFor(memo.data.superseded_by)}>{memo.data.superseded_by}</a>
+            ) : (
+              <span>{memo.data.superseded_by}</span>
+            )}
+          </div>
+        ) : null}
+
         {memo.data.provenance ? <div>Provenance: {memo.data.provenance}</div> : null}
         <div>Filed: {memo.data.published_at}</div>
       </div>
@@ -46,11 +111,32 @@ const { Content } = await memo.render();
       <article>
         <Content />
       </article>
+      {inbound.length ? (
+  <>
+    <hr />
+    <div class="meta">
+      <div><strong>Related memoranda</strong></div>
+      <ul style="margin:10px 0 0; padding-left: 18px;">
+        {inbound.map((m) => (
+          <li style="margin: 6px 0;">
+            <a href={`/memos/${m.slug}`}>{m.data.memo_id}</a>
+            {" — "}
+            {relationLabel(m)}
+            {" · "}
+            {m.data.published_at}
+            {" · "}
+            {m.data.title}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </>
+) : null}
 
       <hr />
 
       <div style="font-size:14px; color:#333;">
-        <a href="/archive">Archive</a> · <a href="/mission">Mission</a> · <a href="/about">About</a>
+        <a href="/archive">Archive</a> · <a href="/divisions">Divisions</a> · <a href="/mission">Mission</a> · <a href="/about">About</a>
       </div>
     </main>
   </body>
