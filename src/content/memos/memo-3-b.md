@@ -35,7 +35,7 @@ Document Number: OSPM-B/17-A
 
 ---
 
-# PREFATORY NOTE
+# EDITORIAL NOTE
 
 This document is released in connection with the previously declassified memorandum titled:
 
