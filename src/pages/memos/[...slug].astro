@@ -18,10 +18,11 @@ const allMemos = await getCollection("memos");
 const thisId = memo.data.memo_id;
 
 const inbound = allMemos
-  .filter((m) =>
-    m.data.amends === thisId ||
-    m.data.retracts === thisId ||
-    m.data.superseded_by === thisId
+  .filter(
+    (m) =>
+      m.data.amends === thisId ||
+      m.data.retracts === thisId ||
+      m.data.superseded_by === thisId
   )
   .sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
 
@@ -65,7 +66,12 @@ function linkFor(id?: string) {
       <div class="meta">
         <div>
           <strong>{memo.data.division}</strong>
-          {memo.data.series ? ` · Series: ${memo.data.series}` : ""}
+          {memo.data.series_slug ? (
+            <>
+              {" · Series: "}
+              <a href={`/series/${memo.data.series_slug}`}>{memo.data.series}</a>
+            </>
+          ) : null}
         </div>
 
         <div>
@@ -111,33 +117,47 @@ function linkFor(id?: string) {
       <article>
         <Content />
       </article>
+
       {inbound.length ? (
-  <>
-    <hr />
-    <div class="meta">
-      <div><strong>Related memoranda</strong></div>
-      <ul style="margin:10px 0 0; padding-left: 18px;">
-        {inbound.map((m) => (
-          <li style="margin: 6px 0;">
-            <a href={`/memos/${m.slug}`}>{m.data.memo_id}</a>
-            {" — "}
-            {relationLabel(m)}
-            {" · "}
-            {m.data.published_at}
-            {" · "}
-            {m.data.title}
-          </li>
-        ))}
-      </ul>
-    </div>
-  </>
-) : null}
+        <>
+          <hr />
+          <div class="meta">
+            <div><strong>Related memoranda</strong></div>
+            <ul style="margin:10px 0 0; padding-left: 18px;">
+              {inbound.map((m) => (
+                <li style="margin: 6px 0;">
+                  <a href={`/memos/${m.slug}`}>{m.data.memo_id}</a>
+                  {" — "}
+                  {relationLabel(m)}
+                  {" · "}
+                  {m.data.published_at}
+                  {" · "}
+                  {m.data.title}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      ) : null}
+
+      <hr />
+
+      <div style="font-size:14px; line-height:1.6; color:#333;">
+        <strong>ARCHIVAL NOTE</strong><br /><br />
+        This memorandum forms part of the <strong>{memo.data.series}</strong> series.<br /><br />
+        Catalog classification and sequencing reflect current archival practice and may not correspond to original circulation order.<br /><br />
+        Some related materials remain unavailable.
+      </div>
 
       <hr />
 
       <div style="font-size:14px; color:#333;">
-        <a href="/archive">Archive</a> · <a href="/divisions">Divisions</a> · <a href="/mission">Mission</a> · <a href="/about">About</a>
+        <a href="/archive">Archive</a> · 
+        <a href="/divisions">Divisions</a> · 
+        <a href="/mission">Mission</a> · 
+        <a href="/about">About</a>
       </div>
+  
     </main>
   </body>
 </html>

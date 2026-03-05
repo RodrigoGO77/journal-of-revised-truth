@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+
+const memos = await getCollection("memos");
+
+const seriesMap = {};
+
+for (const m of memos) {
+  const key = m.data.series_slug;
+  if (!seriesMap[key]) {
+    seriesMap[key] = {
+      name: m.data.series,
+      slug: m.data.series_slug,
+      count: 0
+    };
+  }
+  seriesMap[key].count++;
+}
+
+const series = Object.values(seriesMap);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Series — The Journal of Revised Truth</title>
+  </head>
+
+  <body>
+
+  <main style="max-width:900px;margin:auto;padding:60px 20px">
+
+  <h1>Series</h1>
+
+  <p>
+  Documents are organized into thematic series reflecting the
+  ongoing revision of institutional, scientific, and civilizational understandings.
+  </p>
+
+  {series.map(s => (
+
+    <div style="margin-top:28px">
+
+      <div style="font-size:18px">
+        <a href={`/series/${s.slug}`}>
+          {s.name}
+        </a>
+      </div>
+
+      <div style="font-size:13px;color:#666">
+        {s.count} memoranda
+      </div>
+
+    </div>
+
+  ))}
+
+  </main>
+
+  </body>
+</html>
