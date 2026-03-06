@@ -1,70 +1,23 @@
 ---
-import Nav from "../components/Nav.astro";
+import Layout from "../layouts/JournalLayout.astro";
 ---
 
-<html lang="en">
+<Layout title="Mission" current="mission">
 
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Mission — The Journal of Revised Truth</title>
+  <h1>Mission</h1>
 
-<style>
+  <p style="max-width:760px; line-height:1.7;">
+    The Journal of Revised Truth is committed to the disciplined revision of
+    what was confidently known yesterday and thoughtfully reconsidered tomorrow.
+  </p>
 
-body {
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background:#fff;
-  color:#111;
-}
+  <p style="max-width:760px; line-height:1.7;">
+    We honor those who pursued understanding before it was safe,
+    enduring ridicule and, at times, real harm.
+  </p>
 
-main {
-  max-width:900px;
-  margin:auto;
-  padding:56px 20px;
-}
+  <p style="max-width:760px; line-height:1.7;">
+    The Journal acknowledges that present conclusions may be revised in light of future understanding.
+  </p>
 
-h1 {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight:600;
-}
-
-p {
-  max-width:760px;
-  line-height:1.7;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<main>
-
-<h1>Mission</h1>
-
-<p>
-The Journal of Revised Truth is committed to the disciplined revision of
-what was confidently known yesterday and thoughtfully reconsidered tomorrow.
-</p>
-
-<p>
-We honor those who pursued understanding before it was safe,
-enduring ridicule and, at times, real harm.
-</p>
-The Journal acknowledges that present conclusions may be revised in light of future understanding.
-</p>
-
-<p>
-Humanity remains operational.
-</p>
-<hr style="border:none;border-top:1px solid #e5e5e5;margin:26px 0;" />
-
-<Nav current="mission" />
-
-</main>
-
-</body>
-
-</html>
+</Layout>

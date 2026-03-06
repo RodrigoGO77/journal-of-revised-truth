@@ -1,10 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import Nav from "../../components/Nav.astro";
+import Layout from "../../layouts/JournalLayout.astro";
 
 const memos = await getCollection("memos");
 
-// Build a map of series → count
 const seriesMap = {};
 
 for (const m of memos) {
@@ -22,7 +21,6 @@ for (const m of memos) {
 
   seriesMap[key].count++;
 
-  // Track latest filing date for this series (nice touch)
   if (m.data.published_at > seriesMap[key].latest) {
     seriesMap[key].latest = m.data.published_at;
   }
@@ -33,98 +31,27 @@ const series = Object.values(seriesMap).sort((a, b) =>
 );
 ---
 
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Series — The Journal of Revised Truth</title>
+<Layout title="Series" current="series">
 
-  <style>
-    body {
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:#fff;
-      color:#111;
-    }
+  <h1>Series</h1>
 
-    main {
-      max-width:900px;
-      margin:auto;
-      padding:56px 20px;
-    }
+  <p style="max-width:720px; line-height:1.7; color:#333;">
+    Documents are organized into thematic series reflecting the ongoing revision of
+    institutional, scientific, and civilizational understandings.
+  </p>
 
-    h1 {
-      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-      font-weight:600;
-      margin: 0 0 10px;
-    }
-
-    p {
-      max-width:720px;
-      line-height:1.7;
-      color:#333;
-      margin: 0 0 10px;
-    }
-
-    a {
-      color:inherit;
-      text-decoration: underline;
-      text-decoration-thickness:1px;
-      text-underline-offset:3px;
-    }
-
-    .series {
-      margin-top:26px;
-      border-top:1px solid #e5e5e5;
-      max-width:780px;
-    }
-
-    .row {
-      padding:18px 0;
-      border-bottom:1px solid #e5e5e5;
-    }
-
-    .name {
-      font-size:18px;
-    }
-
-    .meta {
-      font-size:13px;
-      color:#555;
-      line-height:1.6;
-      margin-top: 6px;
-    }
-  </style>
-</head>
-
-<body>
-  <main>
-
-    <h1>Series</h1>
-
-    <p>
-      Documents are organized into thematic series reflecting the ongoing revision of
-      institutional, scientific, and civilizational understandings.
-    </p>
-    <hr style="border:none;border-top:1px solid #e5e5e5;margin:26px 0;" />
-    
-    <!-- Shared navigation -->
-    <Nav current="series" />
-
-    <div class="series">
-      {series.map((s) => (
-        <div class="row">
-          <div class="name">
-            <a href={`/series/${s.slug}`}>{s.name}</a>
-          </div>
-
-          <div class="meta">
-            {s.count} memoranda · Latest filing: {s.latest}
-          </div>
+  <div style="margin-top:26px; border-top:1px solid #e5e5e5; max-width:780px;">
+    {series.map((s) => (
+      <div style="padding:18px 0; border-bottom:1px solid #e5e5e5;">
+        <div style="font-size:18px;">
+          <a href={`/series/${s.slug}`}>{s.name}</a>
         </div>
-      ))}
-    </div>
 
-  </main>
-</body>
-</html>
+        <div style="font-size:13px; color:#555; line-height:1.6; margin-top:6px;">
+          {s.count} memoranda · Latest filing: {s.latest}
+        </div>
+      </div>
+    ))}
+  </div>
+
+</Layout>

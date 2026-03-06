@@ -1,158 +1,62 @@
 ---
 import { getCollection } from "astro:content";
-import Nav from "../components/Nav.astro";
+import Layout from "../layouts/JournalLayout.astro";
 
 const memos = await getCollection("memos");
-
-// newest first
-memos.sort((a,b)=> a.data.published_at < b.data.published_at ? 1 : -1);
+memos.sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
 
 const latest = memos[0];
-const recent = memos.slice(1,6);
+const recent = memos.slice(1, 6);
 ---
 
-<html lang="en">
+<Layout title="Home" current="home">
 
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>The Journal of Revised Truth</title>
+  <h1>Current Filings</h1>
 
-<style>
+  <p style="max-width:760px; line-height:1.7;">
+    The Journal compiles memoranda concerning the revision of previously settled
+    understandings across eras, institutions, and domains.
+  </p>
 
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background:#fff;
-  color:#111;
-}
+  <p style="max-width:760px; line-height:1.7;">
+    Documents are presented with their known circulation stage and archival status.
+    Provenance may be incomplete. Interpretations remain subject to clarification.
+  </p>
 
-main{
-  max-width:980px;
-  margin:0 auto;
-  padding:56px 20px;
-}
+  <div style="margin-top:42px;">
+    <h2 style="font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-weight:600; margin-bottom:12px;">
+      Latest Memorandum
+    </h2>
 
-h1{
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight:600;
-  margin-bottom:12px;
-}
+    {latest && (
+      <div style="margin-top:18px; padding-top:12px; border-top:1px solid #e5e5e5;">
+        <div style="font-size:13px; color:#555;">
+          {latest.data.division} · {latest.data.memo_id} · {latest.data.published_at}
+        </div>
 
-.intro{
-  max-width:760px;
-  line-height:1.7;
-}
+        <div style="font-size:18px; margin-top:6px;">
+          <a href={`/memos/${latest.slug}`}>{latest.data.title}</a>
+        </div>
+      </div>
+    )}
+  </div>
 
-.section{
-  margin-top:42px;
-}
+  <div style="margin-top:42px;">
+    <h2 style="font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-weight:600; margin-bottom:12px;">
+      Earlier Filings
+    </h2>
 
-.memo{
-  margin-top:18px;
-  padding-top:12px;
-  border-top:1px solid #e5e5e5;
-}
+    {recent.map((m) => (
+      <div style="margin-top:18px; padding-top:12px; border-top:1px solid #e5e5e5; max-width:780px;">
+        <div style="font-size:13px; color:#555;">
+          {m.data.division} · {m.data.memo_id} · {m.data.published_at}
+        </div>
 
-.memo-title{
-  font-size:18px;
-}
+        <div style="font-size:18px; margin-top:6px;">
+          <a href={`/memos/${m.slug}`}>{m.data.title}</a>
+        </div>
+      </div>
+    ))}
+  </div>
 
-.meta{
-  font-size:13px;
-  color:#555;
-}
-
-a{
-  color:inherit;
-  text-decoration: underline;
-  text-decoration-thickness:1px;
-  text-underline-offset:3px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<main>
-
-<h1>The Journal of Revised Truth</h1>
-
-<div class="intro">
-
-<p>
-The Journal compiles memoranda concerning the revision of previously settled
-understandings across eras, institutions, and domains.
-</p>
-
-<p>
-Documents are presented with their known circulation stage and archival status.
-Provenance may be incomplete. Interpretations remain subject to clarification.
-</p>
-
-<p>
-Humanity remains operational.
-</p>
-<hr style="border:none;border-top:1px solid #e5e5e5;margin:26px 0;" />
-
-</div>
-
-<Nav />
-
-<div class="section">
-
-<h2>Latest Memorandum</h2>
-
-{latest && (
-
-<div class="memo">
-
-<div class="meta">
-{latest.data.division} · {latest.data.memo_id} · {latest.data.published_at}
-</div>
-
-<div class="memo-title">
-<a href={`/memos/${latest.slug}`}>
-{latest.data.title}
-</a>
-</div>
-
-</div>
-
-)}
-
-</div>
-
-
-<div class="section">
-
-<h2>Recent Memoranda</h2>
-
-{recent.map(m => (
-
-<div class="memo">
-
-<div class="meta">
-{m.data.division} · {m.data.memo_id} · {m.data.published_at}
-</div>
-
-<div class="memo-title">
-<a href={`/memos/${m.slug}`}>
-{m.data.title}
-</a>
-</div>
-
-</div>
-
-))}
-
-</div>
-
-
-</main>
-
-</body>
-
-</html>
+</Layout>
