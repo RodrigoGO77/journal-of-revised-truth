@@ -1,0 +1,253 @@
+/* =========================================
+   Journal of Revised Truths — Archive Style
+   ========================================= */
+
+body {
+  background: #f6f5f2;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* main container */
+
+main {
+  max-width: 980px;
+  margin: auto;
+}
+
+/* =========================================
+   MEMO DOCUMENT CONTAINER
+   ========================================= */
+
+.memo-shell {
+  position: relative;
+}
+
+/* memo document */
+
+.memo-shell article {
+
+  background: #faf9f5;
+
+  /* subtle scan texture */
+  background-image:
+    linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px);
+
+  background-size: 100% 2px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+
+  padding: 36px 40px 55px 40px;
+
+  border-radius: 2px;
+
+  max-width: 760px;
+
+  margin: auto;
+
+  line-height: 1.7;
+
+  font-size: 18px;
+
+  position: relative;
+}
+
+/* =========================================
+   TITLES
+   ========================================= */
+
+h1 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* section headers */
+
+.memo-shell article h2 {
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+
+  margin-top: 40px;
+
+  margin-bottom: 12px;
+
+  font-size: 18px;
+
+  border-top: 1px solid #dcdcdc;
+
+  padding-top: 12px;
+}
+
+/* paragraphs */
+
+p {
+  margin-bottom: 18px;
+}
+
+/* lists */
+
+ul {
+  margin-top: 10px;
+  margin-bottom: 18px;
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* quotes */
+
+blockquote {
+
+  border-left: 3px solid #444;
+
+  margin: 24px 0;
+
+  padding-left: 14px;
+
+  font-style: italic;
+
+  color: #333;
+}
+
+/* horizontal rule */
+
+hr {
+
+  border: none;
+
+  border-top: 1px solid #ddd;
+
+  margin: 30px 0;
+}
+
+/* links */
+
+a {
+
+  color: #222;
+
+  text-decoration: underline;
+
+  text-underline-offset: 3px;
+}
+
+a:hover {
+
+  text-decoration: none;
+}
+
+/* =========================================
+   META TEXT
+   ========================================= */
+
+.meta {
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: #333;
+}
+
+.meta strong {
+
+  color: #111;
+}
+
+/* =========================================
+   DECLASSIFIED STAMP
+   ========================================= */
+
+.declassified-stamp {
+
+  position: absolute;
+
+  top: 130px;        /* moved lower to avoid title overlap */
+
+  right: 7%;
+
+  transform: rotate(-18deg);
+
+  font-family: "Courier New", monospace;
+
+  font-weight: bold;
+
+  font-size: 26px;
+
+  color: rgba(150,0,0,0.55);
+
+  border: 3px solid rgba(150,0,0,0.55);
+
+  padding: 6px 14px;
+
+  letter-spacing: 0.08em;
+
+  mix-blend-mode: multiply;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  z-index: 3;
+}
+
+/* =========================================
+   AUTOMATIC DOCUMENT FOOTER
+   ========================================= */
+.memo-shell article::before {
+  content: "Document Ref: " attr(data-memo);
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 0.05em;
+  font-family: "Courier New", monospace;
+}
+.memo-shell article::after {
+
+  content: "Journal of Revised Truths";
+
+  position: absolute;
+
+  bottom: 12px;
+
+  right: 24px;
+
+  font-size: 12px;
+
+  color: #777;
+
+  letter-spacing: 0.06em;
+}
+
+/* =========================================
+   MOBILE ADJUSTMENT
+   ========================================= */
+
+@media (max-width: 800px) {
+
+  .memo-shell article {
+
+    padding: 26px 22px 40px 22px;
+  }
+
+  .declassified-stamp {
+
+    position: static;
+
+    display: inline-block;
+
+    transform: rotate(-12deg);
+
+    margin-bottom: 16px;
+
+    font-size: 20px;
+  }
+
+}

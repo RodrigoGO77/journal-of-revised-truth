@@ -6,12 +6,12 @@ const memos = defineCollection({
     title: z.string(),
 
     division: z.string(),
-    division_slug: z.string(), // e.g., "continuity-risk"
+    division_slug: z.string(),
 
     series: z.string().optional(),
     series_slug: z.string().optional(),
 
-    memo_id: z.string(), // e.g., "0-A"
+    memo_id: z.string(),
     stage: z.string(),
     status: z.string(),
 
@@ -22,8 +22,10 @@ const memos = defineCollection({
 
     theme: z.array(z.string()).default([]),
     provenance: z.string().optional(),
-    published_at: z.string(), // ISO date
+    published_at: z.string(),
     has_source: z.boolean().default(false),
+
+    stamp: z.string().optional(),
   }),
 });
 

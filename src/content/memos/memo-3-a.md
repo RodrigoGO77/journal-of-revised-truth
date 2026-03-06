@@ -22,25 +22,8 @@ theme:
 
 provenance: "Recovered memorandum, Office of Existential Review"
 has_source: true
+stamp : "LIMITED CIRCULATION"
 ---
-
-🦅 **CENTRAL INTELLIGENCE AGENCY**  
-Office of Administrative Acknowledgment  
-Langley, Virginia  
-
-________________________________________  
-
-**MEMORANDUM FOR:** Public Record  
-**FROM:** Office of Existential Review  
-**SUBJECT:** Administrative Clarification of Institutional Status  
-
-**CLASSIFICATION (FORMER):** TOP SECRET / NON-EXISTENT  
-**CURRENT STATUS:** DECLASSIFIED  
-
-**DECLASSIFICATION AUTHORITY:** FOIA Release   
-**DECLASSIFICATION DATE:** 03 March 2026   
-**RELEASE NUMBER:** OER-EX-2026-017
-________________________________________  
 
 ## I. PURPOSE
 
@@ -54,7 +37,7 @@ The Agency therefore confirms:
 2. It has existed.  
 3. Its prior non-acknowledgment was procedural.
 
-________________________________________  
+---
 
 ## II. STRATEGIC TERMINOLOGY
 
@@ -64,28 +47,27 @@ While the official designation remains Central Intelligence Agency (CIA), the pu
 
 Use of this terminology preserves ambiguity while maintaining brand continuity.
 
-________________________________________  
+---
 
 ## III. EXCEPTIONS
 
 The following matters remain classified:
 
-• █████████████████████  
-• █████████████████████  
-• Bureau of Land Management Wild Horse and Burro Program  
-• █████████████████████ (Equine)
+- █████████████████████  
+- █████████████████████  
+- Bureau of Land Management Wild Horse and Burro Program  
+- █████████████████████ (Equine)
 
-No further clarification will be provided, except to note that burro is Spanish for donkey.   
+No further clarification will be provided, except to note that **burro is Spanish for donkey.**
 
-The Agency has no operational interest in donkeys.   
-The Agency maintains no official position on the word burrito.   
-Any perceived relationship between the two terms is linguistic and therefore outside of the Agency's mandate.   
+The Agency has no operational interest in donkeys.  
+The Agency maintains no official position on the word **burrito.**
+
+Any perceived relationship between the two terms is linguistic and therefore outside of the Agency's mandate.
 
 The matter is considered closed.
 
-
-
-________________________________________  
+---
 
 ## IV. EQUINE NOTICE
 
@@ -102,7 +84,7 @@ Subsequent field reporting indicates that the horses have not requested clarific
 
 Monitoring continues.
 
-________________________________________  
+---
 
 ## V. CONGRESSIONAL RESPONSE
 
@@ -120,27 +102,29 @@ This date was selected for administrative convenience.
 
 Accordingly:
 
-• The CIA now exists by statute.  
-• It existed prior to statute.  
-• It will continue existing regardless of statute.
+- The CIA now exists by statute.  
+- It existed prior to statute.  
+- It will continue existing regardless of statute.
 
 Certain archival documents referencing the Agency prior to 1947 remain under review.
 
-The temporal discrepancy has been classified as **“Resolved.”**
+The temporal discrepancy has been classified as:
 
-________________________________________  
+> **Resolved**
+
+---
 
 ## VI. RISK ASSESSMENT
 
 Risks associated with retroactive creation include:
 
-• Causality irregularities  
-• Archival discomfort  
-• Increased equine confidence  
+- Causality irregularities  
+- Archival discomfort  
+- Increased equine confidence
 
 Mitigation strategies remain classified.
 
-________________________________________  
+---
 
 ## VII. FOOTNOTE (Previously Redacted)
 
@@ -148,16 +132,18 @@ Acknowledgment of existence does not imply acknowledgment of competence, foresig
 
 This memorandum supersedes several earlier memoranda acknowledging the Agency’s non-existence.
 
-________________________________________  
+---
+
 Distribution: Public Record (Unlimited)
-Signed,  
+
+Signed,
 
 **R.T.**  
 Deputy Undersecretary for Existential Management  
-Central Intelligence Agency  
+Central Intelligence Agency
 
 ---
 
-The clarification does not materially affect prior conclusions.  
+The clarification does not materially affect prior conclusions.
 
 **Humanity remains operational.**

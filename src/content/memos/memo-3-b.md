@@ -26,16 +26,7 @@ provenance: "FOIA Electronic Reading Room Release"
 has_source: true
 ---
 
-CENTRAL INTELLIGENCE AGENCY  
-FOIA Electronic Reading Room Release  
-
-Approved for Public Release: 2026  
-Case Number: F-2026-01732  
-Document Number: OSPM-B/17-A  
-
----
-
-# EDITORIAL NOTE
+## EDITORIAL NOTE
 
 This document is released in connection with the previously declassified memorandum titled:
 
@@ -47,17 +38,15 @@ Following that acknowledgment, the Office of Strategic Perception Management was
 
 This study constitutes the resulting terminology assessment.
 
-No operational matters are addressed herein.
+This document contains no operational content.
 
 Except where otherwise noted.
 
 ---
 
-# ADDENDUM B  
-## Public Terminology Optimization Study  
+## ADDENDUM B  
 ### Terminology Assessment Following Institutional Acknowledgment
 
-Central Intelligence Agency  
 Prepared by: Office of Strategic Perception Management  
 Classification: Declassified (Branding Only)
 
@@ -119,7 +108,7 @@ However, participants described it as:
 
 The term was therefore categorized as:
 
-Operationally Effective / Publicly Uncomfortable
+> **Operationally Effective / Publicly Uncomfortable**
 
 ---
 
@@ -127,7 +116,7 @@ Operationally Effective / Publicly Uncomfortable
 
 The Internal Committee on Democratic Presentation concluded:
 
-While “Directorate K” evokes discipline and quiet authority, its adoption would exceed the current level of democratic maturity appropriate for public institutions that describe themselves as “the good guys.”
+While “Directorate K” evokes discipline and quiet authority, its adoption would exceed the current level of democratic maturity appropriate for public institutions that describe themselves as **“the good guys.”**
 
 Accordingly, the CIA affirms:
 
@@ -188,18 +177,6 @@ Office of Administrative Acknowledgment
 
 ---
 
-## ARCHIVAL NOTE
-
-This document was located in a records box labeled:
-
-**“Public Perception — Miscellaneous.”**
-
-Adjacent materials consisted primarily of grill maintenance pamphlets and partially redacted equine correspondence.
-
-No further context was provided.
-
----
-
 The clarification does not materially affect prior conclusions.
 
-Humanity remains operational.
+**Humanity remains operational.**

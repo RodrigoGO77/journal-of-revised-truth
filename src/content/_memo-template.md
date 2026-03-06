@@ -22,6 +22,7 @@ theme:
   - topic2
 
 provenance: "Source description if applicable"
+
 published_at: "YYYY-MM-DD"
 
 has_source: true
@@ -33,11 +34,19 @@ Second paragraph describing findings or conditions observed during investigation
 
 Third paragraph introducing uncertainty, discrepancy, or unexpected behavior within the system under review.
 
+The clarification does not materially affect prior conclusions.
+
+Further study is warranted.
+
+**Humanity remains operational.**
+
 Conclusion summarizing implications for policy, administration, or interpretation.
+
+---
 
 ## Recovered Source (Provenance Unverified)
 
-> Short human fragment.
+> Short human fragment.  
 > Often mundane, skeptical, or quietly rebellious.
 
 The clarification does not materially affect prior conclusions.
