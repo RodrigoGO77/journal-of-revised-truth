@@ -45,7 +45,14 @@ function linkFor(id) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{memo.data.title} — The Journal of Revised Truths</title>
-
+      <meta name="description" content={`${memo.data.title} — memorandum from the Journal of Revised Truths.`} />
+      <meta property="og:title" content={memo.data.title} />
+      <meta property="og:description" content="Memorandum from the Journal of Revised Truths archive." />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content={`https://journalofrevisedtruth.netlify.app/memos/${memo.slug}`} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={memo.data.title} />
+      <meta name="twitter:description" content="Memorandum from the Journal of Revised Truths archive." />
     <style>
       body {
         margin: 0;
