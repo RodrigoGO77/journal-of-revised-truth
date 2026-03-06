@@ -285,4 +285,6 @@ The Office proposes the updated formulation:
 
 > **“History is written by the victors who publish first.”**
 
-Further study is warranted.
+
+
+**Humanity remains operational.**
