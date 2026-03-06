@@ -1,3 +1,6 @@
+---
+import Nav from "../components/Nav.astro";
+---
 
 <html lang="en">
   <head>
@@ -9,7 +12,6 @@
       main { max-width: 780px; margin: 0 auto; padding: 56px 20px; }
       h1 { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 600; margin: 0 0 18px; }
       p { font-size: 18px; line-height: 1.7; margin: 0 0 16px; }
-      nav { margin-top: 18px; font-size: 14px; display:flex; gap:18px; }
       a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     </style>
   </head>
@@ -20,13 +22,8 @@
       <p>The Journal compiles memoranda concerning the evolution of human understanding across eras, institutions, and domains.</p>
       <p>Documents are presented with their known circulation stage and archival status. Provenance may be incomplete. Interpretations remain subject to clarification.</p>
       <p>Earlier related memoranda remain partially unrecovered.</p>
-
-      <nav>
-        <a href="/">Home</a>
-        <a href="/archive">Archive</a>
-        <a href="/mission">Mission</a>
-        <a href="/divisions">Divisions</a>
-      </nav>
+      <hr style="border:none;border-top:1px solid #e5e5e5;margin:26px 0;" />
+      <Nav current="about" />
     </main>
   </body>
 </html>

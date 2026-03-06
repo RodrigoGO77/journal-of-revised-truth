@@ -1,0 +1,30 @@
+---
+const { current = "" } = Astro.props;
+
+const links = [
+  { href: "/", label: "Home", key: "home" },
+  { href: "/archive", label: "Archive", key: "archive" },
+  { href: "/divisions", label: "Divisions", key: "divisions" },
+  { href: "/series", label: "Series", key: "series" },
+  { href: "/editorial-board", label: "Editorial Board", key: "editorial-board" },
+  { href: "/mission", label: "Mission", key: "mission" },
+  { href: "/about", label: "About", key: "about" }
+];
+---
+
+<nav style="margin-top:18px;font-size:14px;display:flex;gap:18px;flex-wrap:wrap;">
+
+{links.map(link => (
+
+  <a
+    href={link.href}
+    style={`text-decoration:underline;text-underline-offset:3px;${
+      current === link.key ? "font-weight:600;" : ""
+    }`}
+  >
+    {link.label}
+  </a>
+
+))}
+
+</nav>

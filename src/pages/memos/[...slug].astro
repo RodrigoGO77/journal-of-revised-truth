@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { buildMemoIndex } from "../../lib/memoIndex";
+import Nav from "../../components/Nav.astro";
 
 export async function getStaticPaths() {
   const memos = await getCollection("memos");
@@ -26,7 +27,7 @@ const inbound = allMemos
   )
   .sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
 
-function relationLabel(m: any) {
+function relationLabel(m) {
   if (m.data.amends === thisId) return "Amends this memorandum";
   if (m.data.retracts === thisId) return "Retracts this memorandum";
   if (m.data.superseded_by === thisId) return "Supersedes this memorandum";
@@ -34,7 +35,7 @@ function relationLabel(m: any) {
 }
 
 // Helper: returns a URL if we know it, otherwise null (so we don’t link to "#")
-function linkFor(id?: string) {
+function linkFor(id) {
   if (!id) return null;
   return memoIndex[id] ?? null;
 }
@@ -58,9 +59,11 @@ function linkFor(id?: string) {
       a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     </style>
   </head>
+
   <body>
     <main>
       <div class="mast">The Journal of Revised Truth</div>
+
       <h1>{memo.data.title}</h1>
 
       <div class="meta">
@@ -144,20 +147,23 @@ function linkFor(id?: string) {
 
       <div style="font-size:14px; line-height:1.6; color:#333;">
         <strong>ARCHIVAL NOTE</strong><br /><br />
-        This memorandum forms part of the <strong>{memo.data.series}</strong> series.<br /><br />
+        {memo.data.series ? (
+          <>
+            This memorandum forms part of the <strong>{memo.data.series}</strong> series.<br /><br />
+          </>
+        ) : (
+          <>
+            This memorandum is filed within the current archival series structure.<br /><br />
+          </>
+        )}
         Catalog classification and sequencing reflect current archival practice and may not correspond to original circulation order.<br /><br />
         Some related materials remain unavailable.
       </div>
 
       <hr />
 
-      <div style="font-size:14px; color:#333;">
-        <a href="/archive">Archive</a> · 
-        <a href="/divisions">Divisions</a> · 
-        <a href="/mission">Mission</a> · 
-        <a href="/about">About</a>
-      </div>
-  
+      <!-- Shared navigation (includes Home + Editorial Board once you add them in Nav.astro) -->
+      <Nav />
     </main>
   </body>
 </html>

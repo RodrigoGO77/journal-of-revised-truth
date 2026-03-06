@@ -1,24 +1,32 @@
 ---
 import { getCollection } from "astro:content";
+import Nav from "../components/Nav.astro";
 
 const memos = await getCollection("memos");
 
-// division_slug -> { name, memos }
-const byDivision = new Map<string, { name: string; memos: typeof memos }>();
+// Collect unique divisions by division_slug
+const divisionMap = {};
 
 for (const m of memos) {
   const slug = m.data.division_slug;
-  if (!byDivision.has(slug)) byDivision.set(slug, { name: m.data.division, memos: [] });
-  byDivision.get(slug)!.memos.push(m);
+  if (!slug) continue;
+
+  if (!divisionMap[slug]) {
+    divisionMap[slug] = {
+      name: m.data.division,
+      slug: m.data.division_slug,
+      latest: m.data.published_at
+    };
+  } else {
+    if (m.data.published_at > divisionMap[slug].latest) {
+      divisionMap[slug].latest = m.data.published_at;
+    }
+  }
 }
 
-// sort divisions by name
-const divisions = Array.from(byDivision.entries()).sort((a, b) => a[1].name.localeCompare(b[1].name));
-
-// newest memo first for each division
-for (const [, obj] of byDivision.entries()) {
-  obj.memos.sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
-}
+const divisions = Object.values(divisionMap).sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
 ---
 
 <html lang="en">
@@ -30,42 +38,30 @@ for (const [, obj] of byDivision.entries()) {
       body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#fff; color:#111; }
       main { max-width: 980px; margin: 0 auto; padding: 56px 20px; }
       h1 { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 600; margin: 0 0 10px; }
-      .sub { max-width: 780px; font-size: 16px; line-height: 1.6; color:#333; }
+      p { max-width: 780px; font-size: 16px; line-height: 1.6; color:#333; }
       a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-      nav { margin-top: 18px; font-size: 14px; display:flex; gap:18px; flex-wrap: wrap; }
       .list { margin-top: 26px; max-width: 780px; border-top: 1px solid #e5e5e5; }
       .row { padding: 16px 0; border-bottom: 1px solid #e5e5e5; }
-      .meta { font-size: 13px; color:#333; line-height:1.6; }
+      .meta { font-size: 13px; color:#555; line-height:1.6; }
       .title { font-size: 18px; margin-top: 6px; }
     </style>
   </head>
   <body>
     <main>
       <h1>Divisions</h1>
-      <div class="sub">Divisional organization reflects current archival practice and remains subject to revision.</div>
-
-      <nav>
-        <a href="/">Home</a>
-        <a href="/archive">Archive</a>
-        <a href="/mission">Mission</a>
-        <a href="/about">About</a>
-      </nav>
+      <p>Divisional organization reflects current archival practice and remains subject to revision.</p>
+      <hr style="border:none;border-top:1px solid #e5e5e5;margin:26px 0;" />
+      <Nav current="divisions" />
 
       <div class="list">
-        {divisions.map(([slug, obj]) => {
-          const latest = obj.memos[0];
-          return (
-            <div class="row">
-              <div class="meta">Latest filing: {latest.data.published_at} · Memorandum {latest.data.memo_id}</div>
-              <div class="title"><a href={`/divisions/${slug}`}>{obj.name}</a></div>
+        {divisions.map((d) => (
+          <div class="row">
+            <div class="meta">Latest filing: {d.latest}</div>
+            <div class="title">
+              <a href={`/divisions/${d.slug}`}>{d.name}</a>
             </div>
-          );
-        })}
-      </div>
-    </main>
-  </body>
-</html>
-        })}
+          </div>
+        ))}
       </div>
     </main>
   </body>

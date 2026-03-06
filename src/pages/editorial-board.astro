@@ -1,3 +1,7 @@
+---
+import Nav from "../components/Nav.astro";
+---
+
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -21,13 +25,12 @@
   <p>Where signatures are missing, names are withheld. Where certainty is unavailable, uncertainty is preserved.</p>
 
   <div class="note">Correspondence may be addressed to the Editorial Office. Responses are not guaranteed.</div>
+  <hr style="border:none;border-top:1px solid #e5e5e5;margin:26px 0;" />
 
   <nav>
-    <a href="/">Home</a>
-    <a href="/mission">Mission</a>
-    <a href="/about">About</a>
-    <a href="/letters">Letters</a>
+    <Nav current="editorial-board" />
   </nav>
+  
 </main>
 </body>
 </html>
