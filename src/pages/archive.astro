@@ -3,38 +3,30 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/JournalLayout.astro";
 
 const memos = await getCollection("memos");
-memos.sort((a,b)=>a.data.published_at < b.data.published_at ? 1 : -1);
+memos.sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
 ---
 
 <Layout title="Archive" current="archive">
+  <h1>Archive</h1>
 
-<h1>Archive</h1>
+  <p>
+    Memoranda are listed by filing date. Circulation stages and adoption
+    statuses may be incomplete.
+  </p>
 
-<p>
-Memoranda are listed by filing date. Circulation stages and adoption
-statuses may be incomplete.
-</p>
+  <div style="margin-top:26px;border-top:1px solid #e5e5e5;max-width:780px;">
+    {memos.map((m) => (
+      <div style="padding:16px 0;border-bottom:1px solid #e5e5e5;">
+        <div style="font-size:13px;color:#333;">
+          {m.data.division} · Memorandum {m.data.document_id ?? m.data.memo_id} · {m.data.published_at}
+        </div>
 
-<div style="margin-top:26px;border-top:1px solid #e5e5e5;max-width:780px;">
-
-{memos.map(m => (
-
-  <div style="padding:16px 0;border-bottom:1px solid #e5e5e5;">
-
-    <div style="font-size:13px;color:#333;">
-      {m.data.division} · Memorandum {m.data.memo_id} · {m.data.published_at}
-    </div>
-
-    <div style="font-size:18px;margin-top:6px;">
-      <a href={`/memos/${m.slug}`}>
-        {m.data.title}
-      </a>
-    </div>
-
+        <div style="font-size:18px;margin-top:6px;">
+          <a href={`/memos/${m.slug}`}>
+            {m.data.title}
+          </a>
+        </div>
+      </div>
+    ))}
   </div>
-
-))}
-
-</div>
-
 </Layout>

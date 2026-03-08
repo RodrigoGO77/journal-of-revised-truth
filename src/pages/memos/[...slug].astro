@@ -16,6 +16,7 @@ const memoIndex = await buildMemoIndex();
 
 const allMemos = await getCollection("memos");
 const thisId = memo.data.memo_id;
+const displayId = memo.data.document_id ?? memo.data.memo_id;
 
 const inbound = allMemos
   .filter(
@@ -41,18 +42,33 @@ function linkFor(id) {
 
 <html lang="en">
   <head>
-    <meta name="description" content={memo.data.title + " — memorandum from the Journal of Revised Truths."} />
+    <meta
+      name="description"
+      content={memo.data.title + " — memorandum from the Journal of Revised Truths."}
+    />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{memo.data.title} — The Journal of Revised Truths</title>
-      <meta name="description" content={`${memo.data.title} — memorandum from the Journal of Revised Truths.`} />
-      <meta property="og:title" content={memo.data.title} />
-      <meta property="og:description" content="Memorandum from the Journal of Revised Truths archive." />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content={`https://journalofrevisedtruth.netlify.app/memos/${memo.slug}`} />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={memo.data.title} />
-      <meta name="twitter:description" content="Memorandum from the Journal of Revised Truths archive." />
+    <meta
+      name="description"
+      content={`${memo.data.title} — memorandum from the Journal of Revised Truths.`}
+    />
+    <meta property="og:title" content={memo.data.title} />
+    <meta
+      property="og:description"
+      content="Memorandum from the Journal of Revised Truths archive."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content={`https://journalofrevisedtruth.netlify.app/memos/${memo.slug}`}
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={memo.data.title} />
+    <meta
+      name="twitter:description"
+      content="Memorandum from the Journal of Revised Truths archive."
+    />
     <style>
       body {
         margin: 0;
@@ -136,7 +152,9 @@ function linkFor(id) {
           </div>
 
           <div>
-            Memorandum <strong>{memo.data.memo_id}</strong> · Stage: {memo.data.stage} · Status: {memo.data.status}
+            Memorandum <strong>{displayId}</strong>
+            {memo.data.document_id ? <> · Reference: {memo.data.memo_id}</> : null}
+            {" · "}Stage: {memo.data.stage} · Status: {memo.data.status}
           </div>
 
           {memo.data.amends ? (
@@ -188,7 +206,7 @@ function linkFor(id) {
             <ul style="margin:10px 0 0; padding-left:18px;">
               {inbound.map((m) => (
                 <li style="margin:6px 0;">
-                  <a href={`/memos/${m.slug}`}>{m.data.memo_id}</a>
+                  <a href={`/memos/${m.slug}`}>{m.data.document_id ?? m.data.memo_id}</a>
                   {" — "}
                   {relationLabel(m)}
                   {" · "}

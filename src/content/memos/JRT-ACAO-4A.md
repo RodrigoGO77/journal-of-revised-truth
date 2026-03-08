@@ -3,6 +3,7 @@ title: "Post-Conflict Narrative Coordination Initiative: Call for Papers — The
 division: "Administrative Capacity Analysis Office"
 division_slug: "administrative-capacity-analysis"
 memo_id: "11-B"
+document_id: "JRT-ACAO-11B"
 series: "Administrative Continuity Series"
 series_slug: "administrative-continuity-series"
 stage: "Limited Circulation"
@@ -117,7 +118,7 @@ Submissions will be evaluated by an interagency editorial panel consisting of re
 - the Central Intelligence Agency  
 - the Department of State  
 - the National Security Council  
-- the Department of Transportation  
+- the Department of Agriculture  
 - several historians who were already writing similar papers  
 
 In the interest of maintaining broad scholarly participation, the panel will also consider submissions from:
@@ -173,7 +174,7 @@ Such developments would create potential complications including:
 
 The panel therefore noted that historical authorship appears to contain a previously underexamined variable:
 
-> **Speed.**
+> **Speed To Publish (STP).**
 
 Early publication may significantly influence which interpretation becomes administratively accepted.
 
@@ -251,13 +252,31 @@ Participants observed that these commercial features may provide **indirect rein
 
 ## XIII. Funding Request
 
-To support this initiative, the Agency intends to request supplemental funding for **Special Operations in Narrative Dissemination.**
+To support this initiative, the Agency intends to request supplemental funding for **Special Operations in Narrative Dissemination**.
 
 Program objectives include:
 
-- ensuring that Cold War historical interpretations aligned with the **Provisional Victory designation** achieve early visibility  
+- ensuring that Cold War historical interpretations aligned with the *Provisional Victory* designation achieve early visibility  
 - encouraging the publication of compatible scholarly materials on emerging network platforms  
 - reducing the likelihood that alternative Cold War narratives achieve comparable distribution reach  
+
+Participants further noted that certain program expenditures may be partially offset through revenue associated with the publication of **_The Official Cold War History_©**, hereafter referred to as **“The History.”**
+
+Potential sources of cost recovery include:
+
+- licensing of authorized editions of **The History** to major publishing houses  
+- academic textbook adoption agreements  
+- documentary and feature film adaptation rights  
+- international translation and distribution contracts  
+- exploratory discussions regarding **premium prestige cable    dramatizations of archival decision-making processes, including extended sequences of officials conferring with wall maps before announcing that events had unfolded precisely as anticipated since 1947**
+
+Preliminary discussions indicate that dramatized portrayals of Cold War developments may generate significant public interest, particularly if narrative clarity is maintained and production budgets allow for the inclusion of **period-appropriate wall maps, urgent telephone calls, and individuals standing around conference tables discussing geopolitical inevitability.**
+
+Accordingly, participants concluded that narrative coordination efforts may reasonably be expected to achieve **partial budgetary self-recovery over the medium term**.
+
+The Agency does not anticipate full operational cost recovery, though several members noted that strong box-office performance associated with **The History** could improve fiscal outcomes.
+
+Further study is warranted.
 
 ---
 
@@ -284,7 +303,5 @@ The **Administrative Capacity Analysis Office** has recommended revising the lon
 The Office proposes the updated formulation:
 
 > **“History is written by the victors who publish first.”**
-
-
 
 **Humanity remains operational.**

@@ -12,6 +12,7 @@ const memos = defineCollection({
     series_slug: z.string().optional(),
 
     memo_id: z.string(),
+    document_id: z.string().optional(),
     stage: z.string(),
     status: z.string(),
 
