@@ -21,6 +21,9 @@ const memos = defineCollection({
     retracts: z.string().optional(),
     superseded_by: z.string().optional(),
 
+    // Cross-references between memoranda
+    references: z.array(z.string()).optional(),
+
     theme: z.array(z.string()).default([]),
     provenance: z.string().optional(),
     published_at: z.string(),

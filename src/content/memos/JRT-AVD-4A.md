@@ -9,12 +9,15 @@ series_slug: "extraterrestrial-operational-review"
 stage: "Limited Circulation"
 status: "Preliminary Inquiry"
 published_at: "2026-03-05"
+references:
+  - "JRT-AVD-4B"
 theme:
   - moon
   - space
   - apollo
 provenance: "Astronomical Verification Directorate Internal Review"
 has_source: false
+stamp: "DECLASSIFIED"
 ---
 
 ## I. PURPOSE
