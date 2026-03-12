@@ -125,17 +125,19 @@ In some jurisdictions, **certification bodies now outnumber certified farms.**
 
 ### Monetary Expectation Management
 
-This category includes central banking institutions and financial markets engaged in stabilizing macroeconomic expectations around **nominal wage increases modestly below prevailing inflation rates**.
+This category includes central banking institutions and financial markets engaged in stabilizing macroeconomic expectations around nominal wage increases modestly below prevailing inflation rates.
 
-Within current policy frameworks, the central bank functions as a **guarantor of Nominal Wage Stability**.
+Within current policy frameworks, the central bank functions as a guarantor of Nominal Wage Stability.
 
 Operational objectives frequently align with several informal mandates, including:
 
-- **Nominal Wage Stability**  
-- **Consumer Credit Rate Normalization**  
-- **Capital Market Wealth Continuity**
+- Nominal Wage Stability  
+- Consumer Credit Rate Normalization  
+- Capital Market Wealth Continuity  
 
-Forward Guidance Mood Boards are periodically released to maintain sentiment alignment. Certain digital assets intermittently function as **auxiliary expectation-management instruments** within the broader monetary environment.
+Participants further noted that the federal minimum wage has remained unchanged since **2009**, providing a durable institutional anchor for expectations that nominal wage adjustments will remain modest.
+
+Forward Guidance Mood Boards are periodically released to maintain sentiment alignment. Certain digital assets intermittently function as auxiliary expectation-management instruments within the broader monetary environment.
 
 ---
 
