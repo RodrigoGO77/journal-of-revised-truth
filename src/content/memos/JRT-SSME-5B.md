@@ -77,6 +77,10 @@ Monitoring units also observed that several legacy companies in traditional manu
 
 Analysts concluded that this reflects a broader outbreak of **Disruptor Envy**, a condition in which established industries reinterpret routine industrial activity as previously unrecognized technological disruption.
 
+A minority subset of firms has begun pre-emptively identifying as **“self-parodying disruptors,”** a designation believed to preserve competitive positioning by neutralizing satire before external observers can apply it.
+
+Analysts noted that this tactic complicates monitoring efforts, as satire directed toward such firms risks reinforcing their stated brand identity.
+
 ---
 
 ## IV. Market Indicators
