@@ -48,7 +48,10 @@ To evaluate the relative importance of these activities, the committee prepared 
 
 ## III. Provisional Sector Reclassification
 
-### Table 1. Provisional Distribution of GDP by Revised Sector Classification
+**Table 1**  
+*Provisional Distribution of GDP by Revised Sector Classification*
+
+---
 
 | Sector | Share of GDP |
 |------|-------------:|
@@ -61,6 +64,10 @@ To evaluate the relative importance of these activities, the committee prepared 
 | Litigation Services | 4% |
 | Government | **25%** |
 | **Total** | **100%** |
+
+*Source: Office of Macroeconomic Narrative Accounting (OMNA), provisional estimates.*
+
+---
 
 Preliminary estimates indicate that the **Meme Construction sector now exceeds Non-Disruptor Legacy Production in relative economic contribution**, reflecting the growing role of narrative amplification and memetic supply chains in contemporary markets.
 
@@ -142,7 +149,7 @@ Litigation converts commercial disagreements into **billable hours** and remains
 
 ### Government
 
-Government continues to represent a substantial share of GDP and requires **no interpretive clarification at this time**.
+Government continues to represent a substantial share of GDP and requires **no further interpretive clarification at this time**.
 
 ---
 

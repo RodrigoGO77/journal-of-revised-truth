@@ -249,5 +249,33 @@ a:hover {
 
     font-size: 20px;
   }
+  table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+table thead tr {
+  border-bottom: 2px solid #444;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table td, table th {
+  padding: 0.5rem 0.75rem;
+}
+
+table th {
+  text-align: left;
+  font-weight: 600;
+}
+
+table td:last-child,
+table th:last-child {
+  text-align: right;
+}
 
 }
