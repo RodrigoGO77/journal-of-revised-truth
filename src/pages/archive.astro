@@ -13,24 +13,38 @@ memos.sort((a, b) =>
 
 <h1>Archive</h1>
 
-<div style="font-size:13px; color:#666; margin-bottom:28px;">
+<div style="font-size:13px; color:#666; margin-bottom:10px;">
 Archival Record Index · Total Records: {memos.length}
+</div>
+
+<div style="max-width:780px; margin-bottom:28px;">
+
+<p>
+The Archive contains memoranda circulated within various administrative divisions concerning revisions to previously established interpretations of historical events, institutional practices, and operational frameworks.
+</p>
+
+<p>
+Documents are listed according to their known circulation stage and archival status. In certain cases, chronological placement remains under review.
+</p>
+
+<p style="font-style:italic; color:#555;">
+The Journal makes no claim regarding the temporal accuracy of all documents contained herein.
+</p>
+
 </div>
 
 {memos.map((m) => (
 
   <div style="margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid #e5e5e5; max-width:780px;">
 
-    <div style="font-size:15px;">
-      <a href={`/memos/${m.slug}`}>
-        <strong>{m.data.document_id ?? m.data.memo_id}</strong>
-      </a>
-      {" — "}
-      {m.data.title}
+    <div style="font-size:13px; color:#666; margin-bottom:3px;">
+      {m.data.document_id ?? m.data.memo_id} · {m.data.division} · {m.data.published_at}
     </div>
 
-    <div style="font-size:13px; color:#555; margin-top:4px;">
-      {m.data.division} · {m.data.published_at}
+    <div>
+      <a href={`/memos/${m.slug}`}>
+        {m.data.title}
+      </a>
     </div>
 
   </div>
