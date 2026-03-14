@@ -19,6 +19,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 
 const memos = await getCollection("memos");
+
 const list = memos
   .filter((m) => m.data.series_slug === slug)
   .sort((a, b) => (a.data.published_at < b.data.published_at ? 1 : -1));
@@ -35,10 +36,14 @@ const seriesName = list[0]?.data.series ?? "Series";
     archival practice and remains subject to revision.
   </p>
 
-  {list.length ? (
+  {list.length > 0 ? (
+
     <div style="margin-top:26px; max-width:780px; border-top:1px solid #e5e5e5;">
+
       {list.map((m) => (
-        <div style="padding:16px 0; border-bottom:1px solid #e5e5e5;">
+
+        <article style="padding:16px 0; border-bottom:1px solid #e5e5e5;">
+
           <div style="font-size:13px; color:#333; line-height:1.6;">
             Filed: {m.data.published_at} · Memorandum {m.data.memo_id} · {m.data.division}
           </div>
@@ -46,13 +51,19 @@ const seriesName = list[0]?.data.series ?? "Series";
           <div style="font-size:18px; margin-top:6px;">
             <a href={`/memos/${m.slug}`}>{m.data.title}</a>
           </div>
-        </div>
+
+        </article>
+
       ))}
+
     </div>
+
   ) : (
+
     <div style="margin-top:26px; color:#333; font-size:14px;">
       No memoranda currently filed under this series slug: <strong>{slug}</strong>.
     </div>
+
   )}
 
 </Layout>

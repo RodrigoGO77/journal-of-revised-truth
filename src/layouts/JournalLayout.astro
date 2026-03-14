@@ -6,107 +6,47 @@ const { title, current, showStamp = false } = Astro.props;
 ---
 
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8" />
-
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>{title} — The Journal of Revised Truths</title>
-    <meta name="description" content="The Journal of Revised Truths compiles memoranda concerning the evolution of human understanding across eras, institutions, and domains.">
 
-    <meta name="keywords" content="satire, historical satire, bureaucratic satire, cold war satire, government memos, fictional archives">
+    <meta
+      name="description"
+      content="The Journal of Revised Truths compiles memoranda concerning the evolution of human understanding across eras, institutions, and domains."
+    />
+    <meta
+      name="keywords"
+      content="satire, historical satire, bureaucratic satire, cold war satire, government memos, fictional archives"
+    />
+    <meta name="author" content="Journal of Revised Truths Editorial Office" />
 
-    <meta name="author" content="Journal of Revised Truths Editorial Office">
+    <meta property="og:title" content="The Journal of Revised Truths" />
+    <meta
+      property="og:description"
+      content="Institutional memoranda documenting revised understandings of historical events."
+    />
+    <meta property="og:type" content="website" />
 
-    <meta property="og:title" content="The Journal of Revised Truths">
-    <meta property="og:description" content="Institutional memoranda documenting revised understandings of historical events.">
-    <meta property="og:type" content="website">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="The Journal of Revised Truths">
-    <meta name="twitter:description" content="An archival collection of bureaucratic memoranda documenting revised truths.">
-
-    <style>
-      body{
-        margin:0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-        background:#fff;
-        color:#111;
-      }
-
-      main{
-        max-width:980px;
-        margin:auto;
-        padding:48px 20px 60px 20px;
-      }
-
-      .masthead{
-        margin-bottom:34px;
-      }
-
-      .journal-title{
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-        font-size:20px;
-        letter-spacing:.08em;
-        text-transform:uppercase;
-        font-weight:600;
-      }
-
-      .motto{
-        font-size:14px;
-        color:#555;
-        margin-top:6px;
-      }
-
-      h1{
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-        font-weight:600;
-        margin:0 0 12px;
-      }
-
-      a{
-        color:inherit;
-        text-decoration: underline;
-        text-underline-offset:3px;
-      }
-
-      hr{
-        border:none;
-        border-top:1px solid #e5e5e5;
-        margin:26px 0;
-      }
-      article p{
-        margin:0 0 12px;
-      }
-
-      article ul,
-      article ol{
-        margin:0 0 12px 22px;
-      }
-
-      article li{
-        margin:0 0 6px;
-      }
-    </style>
-
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="The Journal of Revised Truths" />
+    <meta
+      name="twitter:description"
+      content="An archival collection of bureaucratic memoranda documenting revised truths."
+    />
   </head>
 
   <body>
-
     <main>
-
       <div class="masthead">
-
-        <div class="journal-title">
+        <div class="site-title">
           The Journal of Revised Truths
         </div>
 
         <div class="motto">
           Humanity remains operational.
         </div>
-
       </div>
 
       <Nav current={current} />
@@ -114,7 +54,6 @@ const { title, current, showStamp = false } = Astro.props;
       <hr />
 
       <div class="document-container">
-
         {showStamp && (
           <div class="declassified-stamp">
             DECLASSIFIED
@@ -122,15 +61,9 @@ const { title, current, showStamp = false } = Astro.props;
         )}
 
         <article>
-          
           <slot />
         </article>
-
       </div>
-
     </main>
-
   </body>
-  
-
 </html>

@@ -22,14 +22,15 @@ const recent = memos.slice(1, 6);
   </div>
 
   <p style="max-width:760px; line-height:1.7;">
-    The Journal of Revised Truths compiles memoranda concerning the revision of previously
-    settled understandings across historical eras, institutional frameworks, and operational 
-    domains.
+    <span class="journal-title">The Journal of Revised Truths</span> compiles memoranda addressing
+    the revision of previously settled understandings across historical eras, institutional
+    frameworks, and operational domains.
   </p>
 
   <p style="max-width:760px; line-height:1.7;">
-    Documents are presented according to their known circulation stage and archival status. 
-    Origin records may be incomplete. Interpretations remain subject to clarification pending further administrative review.
+    Documents are presented according to their known circulation stage and archival status.
+    Origin records may be incomplete. Interpretations remain subject to clarification pending
+    further administrative review.
   </p>
 
   <div style="margin-top:42px;">
@@ -48,7 +49,7 @@ const recent = memos.slice(1, 6);
         </div>
 
         <div style="font-size:13px; color:#666; margin-top:6px;">
-          Series: {latest.data.series}
+          Series: <span class="series">{latest.data.series}</span>
         </div>
       </article>
     )}
@@ -70,7 +71,7 @@ const recent = memos.slice(1, 6);
         </div>
 
         <div style="font-size:13px; color:#666; margin-top:6px;">
-          Series: {m.data.series}
+          Series: <span class="series">{m.data.series}</span>
         </div>
       </article>
     ))}

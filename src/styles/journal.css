@@ -6,253 +6,136 @@ body {
   background: #f6f5f2;
   color: #111;
   font-family: Georgia, "Times New Roman", serif;
+  margin: 0;
 }
 
 /* main container */
 
 main {
   max-width: 980px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 48px 20px 60px 20px;
 }
 
 /* =========================================
-   MEMO DOCUMENT CONTAINER
+   MASTHEAD / HEADER
    ========================================= */
 
-.memo-shell {
-  position: relative;
+.masthead {
+  margin-bottom: 34px;
 }
 
-/* memo document */
+.site-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-style: normal;
+  margin: 0;
+}
 
-.memo-shell article {
+.motto {
+  font-size: 14px;
+  color: #555;
+  margin-top: 6px;
+  margin-bottom: 0;
+  font-style: normal;
+}
 
-  background: #faf9f5;
-
-  /* subtle scan texture */
-  background-image:
-    linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px);
-
-  background-size: 100% 2px;
-
-  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
-
-  padding: 36px 40px 55px 40px;
-
-  border-radius: 2px;
-
-  max-width: 760px;
-
-  margin: auto;
-
-  line-height: 1.7;
-
-  font-size: 18px;
-
-  position: relative;
+nav {
+  margin-top: 14px;
+  margin-bottom: 28px;
 }
 
 /* =========================================
-   TITLES
+   PAGE TITLES
    ========================================= */
 
 h1 {
   margin-top: 10px;
   margin-bottom: 20px;
   font-family: Georgia, "Times New Roman", serif;
+  font-style: normal;
+  font-weight: 600;
 }
 
-/* section headers */
+h2 {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+}
+
+/* section headers inside memo pages */
 
 .memo-shell article h2 {
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.06em;
-
   margin-top: 40px;
-
   margin-bottom: 12px;
-
-  font-size: 18px;
-
-  border-top: 1px solid #dcdcdc;
-
   padding-top: 12px;
+  border-top: 1px solid #dcdcdc;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 18px;
 }
 
-/* paragraphs */
+/* =========================================
+   BODY TEXT
+   ========================================= */
 
 p {
+  max-width: 760px;
   margin-bottom: 18px;
+  line-height: 1.7;
 }
 
-/* lists */
-
-ul {
+ul,
+ol {
+  max-width: 760px;
   margin-top: 10px;
   margin-bottom: 18px;
   padding-left: 22px;
+  line-height: 1.7;
 }
 
 li {
   margin-bottom: 6px;
 }
 
-/* quotes */
-
 blockquote {
-
-  border-left: 3px solid #444;
-
+  max-width: 760px;
   margin: 24px 0;
-
   padding-left: 14px;
-
+  border-left: 3px solid #444;
   font-style: italic;
-
   color: #333;
 }
 
-/* horizontal rule */
-
 hr {
-
-  border: none;
-
-  border-top: 1px solid #ddd;
-
   margin: 30px 0;
+  border: none;
+  border-top: 1px solid #ddd;
 }
 
-/* links */
-
 a {
-
   color: #222;
-
   text-decoration: underline;
-
   text-underline-offset: 3px;
 }
 
 a:hover {
-
   text-decoration: none;
 }
 
 /* =========================================
-   META TEXT
+   TABLES
    ========================================= */
 
-.meta {
-
-  font-size: 14px;
-
-  line-height: 1.6;
-
-  color: #333;
-}
-
-.meta strong {
-
-  color: #111;
-}
-
-/* =========================================
-   DECLASSIFIED STAMP
-   ========================================= */
-
-.declassified-stamp {
-
-  position: absolute;
-
-  top: 130px;        /* moved lower to avoid title overlap */
-
-  right: 7%;
-
-  transform: rotate(-18deg);
-
-  font-family: "Courier New", monospace;
-
-  font-weight: bold;
-
-  font-size: 26px;
-
-  color: rgba(150,0,0,0.55);
-
-  border: 3px solid rgba(150,0,0,0.55);
-
-  padding: 6px 14px;
-
-  letter-spacing: 0.08em;
-
-  mix-blend-mode: multiply;
-
-  pointer-events: none;
-
-  user-select: none;
-
-  z-index: 3;
-}
-
-/* =========================================
-   AUTOMATIC DOCUMENT FOOTER
-   ========================================= */
-.memo-shell article::before {
-  content: "Document Ref: " attr(data-memo);
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  font-size: 12px;
-  color: #666;
-  letter-spacing: 0.05em;
-  font-family: "Courier New", monospace;
-}
-.memo-shell article::after {
-
-  content: "Journal of Revised Truths";
-
-  position: absolute;
-
-  bottom: 12px;
-
-  right: 24px;
-
-  font-size: 12px;
-
-  color: #777;
-
-  letter-spacing: 0.06em;
-}
-
-/* =========================================
-   MOBILE ADJUSTMENT
-   ========================================= */
-
-@media (max-width: 800px) {
-
-  .memo-shell article {
-
-    padding: 26px 22px 40px 22px;
-  }
-
-  .declassified-stamp {
-
-    position: static;
-
-    display: inline-block;
-
-    transform: rotate(-12deg);
-
-    margin-bottom: 16px;
-
-    font-size: 20px;
-  }
-  table {
-  border-collapse: collapse;
+table {
   width: 100%;
+  max-width: 760px;
   margin: 1.5rem 0;
+  border-collapse: collapse;
   font-size: 0.95rem;
 }
 
@@ -264,7 +147,8 @@ table tbody tr {
   border-bottom: 1px solid #ddd;
 }
 
-table td, table th {
+table th,
+table td {
   padding: 0.5rem 0.75rem;
 }
 
@@ -273,26 +157,159 @@ table th {
   font-weight: 600;
 }
 
-table td:last-child,
-table th:last-child {
+table th:last-child,
+table td:last-child {
   text-align: right;
 }
+
+/* =========================================
+   META TEXT
+   ========================================= */
+
+.meta {
+  max-width: 760px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.meta strong {
+  color: #111;
+}
+
+/* body-only italics */
+
+.series {
+  font-style: italic;
+}
+
+.journal-title {
+  font-style: italic;
+}
+
+/* =========================================
+   RECORD LISTS
+   ========================================= */
+
+.record-list {
+  max-width: 780px;
+  margin-top: 26px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.record-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.record-meta {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.record-title {
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+.record-series {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* =========================================
+   MEMO DOCUMENT CONTAINER
+   ========================================= */
+
 .memo-shell {
   position: relative;
 }
 
-.declassified-stamp {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  transform: rotate(-18deg);
-  font-weight: 700;
-  letter-spacing: .18em;
-  border: 3px solid #c65b5b;
-  color: #c65b5b;
-  padding: 8px 14px;
-  font-size: 14px;
-  opacity: .9;
+.memo-shell article {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 40px 55px 40px;
+  background: #faf9f5;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 100% 2px;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  line-height: 1.7;
+  font-size: 18px;
 }
 
+/* =========================================
+   DECLASSIFIED STAMP
+   ========================================= */
+
+.declassified-stamp {
+  position: absolute;
+  top: 130px;
+  right: 7%;
+  z-index: 3;
+  transform: rotate(-18deg);
+  padding: 6px 14px;
+  border: 3px solid rgba(150, 0, 0, 0.55);
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  color: rgba(150, 0, 0, 0.55);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =========================================
+   AUTOMATIC DOCUMENT FOOTER / HEADER
+   ========================================= */
+
+.memo-shell article::before {
+  content: "Document Ref: " attr(data-memo);
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 12px;
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.memo-shell article::after {
+  content: "Journal of Revised Truths";
+  position: absolute;
+  bottom: 12px;
+  right: 24px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: #777;
+}
+
+/* =========================================
+   MOBILE ADJUSTMENT
+   ========================================= */
+
+@media (max-width: 800px) {
+  main {
+    padding: 32px 16px 40px 16px;
+  }
+
+  .site-title {
+    letter-spacing: 0.06em;
+  }
+
+  .memo-shell article {
+    padding: 26px 22px 40px 22px;
+  }
+
+  .declassified-stamp {
+    position: static;
+    display: inline-block;
+    transform: rotate(-12deg);
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
 }
