@@ -27,7 +27,7 @@ Later archival discoveries may reveal additional memoranda associated with subse
 
 ---
 
-# Preliminary Administrative Assessment of Early Alectrical Renaissance Conditions
+
 
 ---
 

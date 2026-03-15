@@ -5,15 +5,17 @@ const { frontmatter } = Astro.props;
 ---
 
 <JournalLayout title={frontmatter.title} current="archive" showStamp={false}>
+  <div class="memo-shell">
+    <article data-memo={frontmatter.document_id ?? frontmatter.memo_id}>
+      <div style="border:1px solid #d9d9d9; padding:16px 18px; margin-bottom:30px; font-size:14px; line-height:1.7; background:#fcfcfc;">
+        <div><strong>Document ID:</strong> {frontmatter.document_id}</div>
+        <div><strong>Division:</strong> {frontmatter.division}</div>
+        <div><strong>Series:</strong> {frontmatter.series}</div>
+        <div><strong>Status:</strong> {frontmatter.status}</div>
+        <div><strong>Classification:</strong> {frontmatter.stamp}</div>
+      </div>
 
-  <div style="border:1px solid #d9d9d9; padding:16px 18px; margin-bottom:30px; font-size:14px; line-height:1.7; background:#fcfcfc;">
-    <div><strong>Document ID:</strong> {frontmatter.document_id}</div>
-    <div><strong>Division:</strong> {frontmatter.division}</div>
-    <div><strong>Series:</strong> {frontmatter.series}</div>
-    <div><strong>Status:</strong> {frontmatter.status}</div>
-    <div><strong>Classification:</strong> {frontmatter.stamp}</div>
+      <slot />
+    </article>
   </div>
-
-  <slot />
-
 </JournalLayout>

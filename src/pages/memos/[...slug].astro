@@ -82,74 +82,6 @@ const referencedMemos = (memo.data.references ?? [])
     />
 
     <style>
-      body {
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-        background: #fff;
-        color: #111;
-      }
-
-      main {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 48px 20px 60px 20px;
-      }
-
-      .masthead {
-        margin-bottom: 34px;
-      }
-
-      .journal-title {
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-        font-size: 20px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-weight: 600;
-      }
-
-      .motto {
-        font-size: 14px;
-        color: #555;
-        margin-top: 6px;
-      }
-
-      h1 {
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-        font-weight: 600;
-        margin: 0 0 12px;
-      }
-
-      hr {
-        border: none;
-        border-top: 1px solid #e5e5e5;
-        margin: 26px 0;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 3px;
-      }
-
-      .document-header {
-        border: 1px solid #ddd;
-        background: #fafafa;
-        padding: 16px 18px;
-        margin-bottom: 28px;
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .document-header-title {
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #666;
-        margin-bottom: 8px;
-      }
-
-      .meta,
       .archival-note {
         font-size: 14px;
         line-height: 1.6;
@@ -161,7 +93,7 @@ const referencedMemos = (memo.data.references ?? [])
   <body>
     <main>
       <div class="masthead">
-        <div class="journal-title">The Journal of Revised Truths</div>
+        <div class="site-title">The Journal of Revised Truths</div>
         <div class="motto">Humanity remains operational.</div>
       </div>
 
@@ -170,92 +102,97 @@ const referencedMemos = (memo.data.references ?? [])
       <hr />
 
       <div class="memo-shell">
-        {memo.data.stamp && (
-          <div class="declassified-stamp">{memo.data.stamp}</div>
-        )}
+        <h1 class="memo-title">{memo.data.title}</h1>
 
-        <h1>{memo.data.title}</h1>
+        <div class="document-header">
+          <div class="document-header-grid">
+            <div class="document-header-meta">
+              <div>
+                <strong>Document ID:</strong> {memo.data.document_id ?? memo.data.memo_id}
+              </div>
 
+              {memo.data.document_id ? (
+                <div>
+                  <strong>Reference:</strong> {memo.data.memo_id}
+                </div>
+              ) : null}
 
+              <div>
+                <strong>Division:</strong> {memo.data.division}
+              </div>
 
-          <div>
-            <strong>Document ID:</strong> {memo.data.document_id ?? memo.data.memo_id}
-          </div>
+              {memo.data.series ? (
+                <div>
+                  <strong>Series:</strong>{" "}
+                  {memo.data.series_slug ? (
+                    <a href={`/series/${memo.data.series_slug}`}>{memo.data.series}</a>
+                  ) : (
+                    memo.data.series
+                  )}
+                </div>
+              ) : null}
 
-          {memo.data.document_id ? (
-            <div>
-              <strong>Reference:</strong> {memo.data.memo_id}
+              <div>
+                <strong>Stage:</strong> {memo.data.stage}
+              </div>
+
+              <div>
+                <strong>Status:</strong> {memo.data.status}
+              </div>
+
+              {memo.data.provenance ? (
+                <div>
+                  <strong>Provenance:</strong> {memo.data.provenance}
+                </div>
+              ) : null}
+
+              <div>
+                <strong>Filed:</strong> {memo.data.published_at}
+              </div>
+
+              {memo.data.amends ? (
+                <div>
+                  <strong>Amends:</strong>{" "}
+                  {linkFor(memo.data.amends) ? (
+                    <a href={linkFor(memo.data.amends)}>{memo.data.amends}</a>
+                  ) : (
+                    <span>{memo.data.amends}</span>
+                  )}
+                </div>
+              ) : null}
+
+              {memo.data.retracts ? (
+                <div>
+                  <strong>Retracts:</strong>{" "}
+                  {linkFor(memo.data.retracts) ? (
+                    <a href={linkFor(memo.data.retracts)}>{memo.data.retracts}</a>
+                  ) : (
+                    <span>{memo.data.retracts}</span>
+                  )}
+                </div>
+              ) : null}
+
+              {memo.data.superseded_by ? (
+                <div>
+                  <strong>Superseded by:</strong>{" "}
+                  {linkFor(memo.data.superseded_by) ? (
+                    <a href={linkFor(memo.data.superseded_by)}>{memo.data.superseded_by}</a>
+                  ) : (
+                    <span>{memo.data.superseded_by}</span>
+                  )}
+                </div>
+              ) : null}
             </div>
-          ) : null}
 
-          <div>
-            <strong>Division:</strong> {memo.data.division}
-          </div>
-
-          {memo.data.series ? (
-            <div>
-              <strong>Series:</strong>{" "}
-              {memo.data.series_slug ? (
-                <a href={`/series/${memo.data.series_slug}`}>{memo.data.series}</a>
-              ) : (
-                memo.data.series
+            <div class="document-header-stamp">
+              {memo.data.stamp && (
+                <div class="declassified-stamp">{memo.data.stamp}</div>
               )}
             </div>
-          ) : null}
-
-          <div>
-            <strong>Stage:</strong> {memo.data.stage}
           </div>
-
-          <div>
-            <strong>Status:</strong> {memo.data.status}
-          </div>
-
-          {memo.data.provenance ? (
-            <div>
-              <strong>Provenance:</strong> {memo.data.provenance}
-            </div>
-          ) : null}
-
-          <div>
-            <strong>Filed:</strong> {memo.data.published_at}
-          </div>
-
-          {memo.data.amends ? (
-            <div>
-              <strong>Amends:</strong>{" "}
-              {linkFor(memo.data.amends) ? (
-                <a href={linkFor(memo.data.amends)}>{memo.data.amends}</a>
-              ) : (
-                <span>{memo.data.amends}</span>
-              )}
-            </div>
-          ) : null}
-
-          {memo.data.retracts ? (
-            <div>
-              <strong>Retracts:</strong>{" "}
-              {linkFor(memo.data.retracts) ? (
-                <a href={linkFor(memo.data.retracts)}>{memo.data.retracts}</a>
-              ) : (
-                <span>{memo.data.retracts}</span>
-              )}
-            </div>
-          ) : null}
-
-          {memo.data.superseded_by ? (
-            <div>
-              <strong>Superseded by:</strong>{" "}
-              {linkFor(memo.data.superseded_by) ? (
-                <a href={linkFor(memo.data.superseded_by)}>{memo.data.superseded_by}</a>
-              ) : (
-                <span>{memo.data.superseded_by}</span>
-              )}
-            </div>
-          ) : null}
         </div>
 
-        <article data-memo={memo.data.memo_id}>
+        <article data-memo={memo.data.memo_id ?? memo.data.document_id}>
           <Content />
         </article>
       </div>
